@@ -21,6 +21,17 @@ class Posyandu extends REST_Controller{
     }
     $this->response($response);
   }
+
+  // untuk menambah data menaggunakan method post
+  public function add_post(){
+    $response = $this->PosyanduM->add(
+        $this->post('nama'),
+        $this->post('alamat'),
+        $this->post('lng'),
+        $this->post('lat')
+      );
+    $this->response($response);
+  }
 }
 
 ?>

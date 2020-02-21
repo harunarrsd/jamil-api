@@ -24,7 +24,7 @@ class KaderM extends CI_Model{
   }
 
   // function untuk insert data
-  public function add($idposyandu,$nama,$photo,$notelp,$email,$password){
+  public function add($idposyandu,$nama,$photo,$notelp,$email,$password,$status){
     if(empty($nama) || empty($email) || empty($password)){
       return $this->empty_response();
     }else{
@@ -34,7 +34,8 @@ class KaderM extends CI_Model{
         "photo"=>$photo,
         "notelp"=>$notelp,
         "email"=>$email,
-        "password"=>$password
+        "password"=>$password,
+        "status"=>$status
       );
       $insert = $this->db->insert("kader", $data);
       if($insert){
@@ -46,6 +47,34 @@ class KaderM extends CI_Model{
         $response['status']=502;
         $response['error']=true;
         $response['message']='Registrasi gagal.';
+        return $response;
+      }
+    }
+  }
+
+  // update
+  public function update_regist($id,$idposyandu,$status){
+    if($id == ''){
+      return $this->empty_response();
+    }else{
+      $where = array(
+        "kader.id"=>$id
+      );
+      $set = array(
+        "idposyandu"=>$idposyandu,
+        "status"=>$status
+      );
+      $this->db->where($where);
+      $update = $this->db->update("kader",$set);
+      if($update){
+        $response['status']=200;
+        $response['error']=false;
+        $response['message']='Data kader diubah.';
+        return $response;
+      }else{
+        $response['status']=502;
+        $response['error']=true;
+        $response['message']='Data kader gagal diubah.';
         return $response;
       }
     }

@@ -30,8 +30,19 @@ class Kader extends REST_Controller{
         $this->post('photo'),
         $this->post('notelp'),
         $this->post('email'),
-        md5($this->post('password'))
+        md5($this->post('password')),
+        $this->post('status')
       );
+    $this->response($response);
+  }
+
+  // update data menggunakan method post
+  public function update_regist_post(){
+    $response = $this->KaderM->update_regist(
+      $this->post('id'),
+      $this->post('idposyandu'),
+      $this->post('status')
+    );
     $this->response($response);
   }
 }
