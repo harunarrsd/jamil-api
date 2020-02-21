@@ -3,14 +3,12 @@
 require APPPATH . 'libraries/REST_Controller.php';
 
 class User extends REST_Controller{
-
   // construct
   public function __construct(){
     parent::__construct();
     $this->load->model('UserM');
   }
-
-  // method index untuk menampilkan semua data person menggunakan method get
+  // method index untuk menampilkan semua data menggunakan method get
   public function index_get(){
     $id = $this->get('id');
     if ($id == '') {
@@ -21,7 +19,6 @@ class User extends REST_Controller{
     }
     $this->response($response);
   }
-
   // untuk menambah data menaggunakan method post
   public function add_post(){
     $response = $this->UserM->add(
@@ -35,7 +32,6 @@ class User extends REST_Controller{
       );
     $this->response($response);
   }
-
   // update data menggunakan method post
   public function update_regist_post(){
     $response = $this->UserM->update_regist(
@@ -45,7 +41,5 @@ class User extends REST_Controller{
     );
     $this->response($response);
   }
-
 }
-
 ?>

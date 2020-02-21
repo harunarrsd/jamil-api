@@ -1,8 +1,6 @@
 <?php
-
 // extends class Model
 class PosyanduM extends CI_Model{
-
   // mengambil semua data
   public function get_all(){
     $all = $this->db->get("posyandu")->result();
@@ -11,7 +9,6 @@ class PosyanduM extends CI_Model{
     $response['posyandu']=$all;
     return $response;
   }
-
   // function untuk insert data
   public function add($nama,$alamat,$lng,$lat){
     if(empty($nama)){

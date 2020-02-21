@@ -1,8 +1,6 @@
 <?php
-
 // extends class Model
 class Record_makanM extends CI_Model{
-
   // response jika field ada yang kosong
   public function empty_response(){
     $response['status']=502;
@@ -10,7 +8,6 @@ class Record_makanM extends CI_Model{
     $response['message']='Field tidak boleh kosong';
     return $response;
   }
-
   // function untuk insert data ke tabel tb_person
   public function add($iduser,$nama,$kalori,$protein,$lemak,$kalsium){
     if(empty($iduser) || empty($nama) || empty($kalori) || empty($protein) || empty($lemak) || empty($kalsium)){
@@ -39,7 +36,6 @@ class Record_makanM extends CI_Model{
       }
     }
   }
-
   // mengambil data sum
   public function get_sum(){
     // $all = $this->db->get("record_makan")->result();
@@ -51,7 +47,6 @@ class Record_makanM extends CI_Model{
     $response['record_makan']=$all;
     return $response;
   }
-
   // mengambil semua data
   public function get_all(){
     $all = $this->db->get("record_makan")->result();

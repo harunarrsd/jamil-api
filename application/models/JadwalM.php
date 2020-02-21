@@ -1,8 +1,6 @@
 <?php
-
 // extends class Model
 class JadwalM extends CI_Model{
-
   // response jika field ada yang kosong
   public function empty_response(){
     $response['status']=502;
@@ -10,7 +8,6 @@ class JadwalM extends CI_Model{
     $response['message']='Field tidak boleh kosong';
     return $response;
   }
-
   // function untuk insert data
   public function add($iduser,$idposyandu,$deskripsi,$created_by,$tgl){
     if(empty($iduser) || empty($deskripsi) || empty($tgl)){
@@ -37,7 +34,6 @@ class JadwalM extends CI_Model{
       }
     }
   }
-
   // mengambil semua data
   public function get_all(){
     $all = $this->db->get("jadwal")->result();

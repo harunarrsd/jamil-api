@@ -1,8 +1,6 @@
 <?php
-
 // extends class Model
 class KaderM extends CI_Model{
-
   // response jika field ada yang kosong
   public function empty_response(){
     $response['status']=502;
@@ -10,7 +8,6 @@ class KaderM extends CI_Model{
     $response['message']='Field tidak boleh kosong';
     return $response;
   }
-
   // mengambil semua data
   public function get_all(){
     $this->db->select('kader.*, posyandu.nama as nama_posyandu');
@@ -22,7 +19,6 @@ class KaderM extends CI_Model{
     $response['kader']=$all;
     return $response;
   }
-
   // function untuk insert data
   public function add($idposyandu,$nama,$photo,$notelp,$email,$password,$status){
     if(empty($nama) || empty($email) || empty($password)){
@@ -51,7 +47,6 @@ class KaderM extends CI_Model{
       }
     }
   }
-
   // update
   public function update_regist($id,$idposyandu,$status){
     if($id == ''){
@@ -80,5 +75,4 @@ class KaderM extends CI_Model{
     }
   }
 }
-
 ?>

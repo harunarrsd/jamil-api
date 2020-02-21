@@ -3,25 +3,22 @@
 require APPPATH . 'libraries/REST_Controller.php';
 
 class Kader extends REST_Controller{
-
   // construct
   public function __construct(){
     parent::__construct();
     $this->load->model('KaderM');
   }
-
   // method index untuk menampilkan semua data person menggunakan method get
   public function index_get(){
     $id = $this->get('id');
     if ($id == '') {
-        $response = $this->KaderM->get_all();
+      $response = $this->KaderM->get_all();
     } else {
-        $this->db->where('kader.id', $id);
-        $response = $this->KaderM->get_all();
+      $this->db->where('kader.id', $id);
+      $response = $this->KaderM->get_all();
     }
     $this->response($response);
   }
-
   // untuk menambah data menaggunakan method post
   public function add_post(){
     $response = $this->KaderM->add(
@@ -35,7 +32,6 @@ class Kader extends REST_Controller{
       );
     $this->response($response);
   }
-
   // update data menggunakan method post
   public function update_regist_post(){
     $response = $this->KaderM->update_regist(
@@ -46,5 +42,4 @@ class Kader extends REST_Controller{
     $this->response($response);
   }
 }
-
 ?>

@@ -1,8 +1,6 @@
 <?php
-
 // extends class Model
 class BayiM extends CI_Model{
-
   // response jika field ada yang kosong
   public function empty_response(){
     $response['status']=502;
@@ -10,7 +8,6 @@ class BayiM extends CI_Model{
     $response['message']='Field tidak boleh kosong';
     return $response;
   }
-
   // mengambil semua data
   public function get_all(){
     $all = $this->db->get("bayi")->result();
@@ -19,7 +16,6 @@ class BayiM extends CI_Model{
     $response['bayi']=$all;
     return $response;
   }
-
   // function untuk insert data
   public function add($iduser,$nama,$gender){
     if(empty($iduser) || empty($nama) || empty($gender)){
@@ -44,7 +40,5 @@ class BayiM extends CI_Model{
       }
     }
   }
-
 }
-
 ?>

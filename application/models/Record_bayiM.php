@@ -1,8 +1,6 @@
 <?php
-
 // extends class Model
 class Record_bayiM extends CI_Model{
-
   // response jika field ada yang kosong
   public function empty_response(){
     $response['status']=502;
@@ -10,7 +8,6 @@ class Record_bayiM extends CI_Model{
     $response['message']='Field tidak boleh kosong';
     return $response;
   }
-
   // function untuk insert data ke tabel tb_person
   public function add($tinggi_badan,$berat_badan,$idbayi,$usia_bulan){
     if(empty($tinggi_badan) || empty($berat_badan) || empty($idbayi)){
@@ -37,7 +34,6 @@ class Record_bayiM extends CI_Model{
       }
     }
   }
-
   // mengambil semua data person
   public function all_record_bayi(){
     $all = $this->db->get("record_bayi")->result();

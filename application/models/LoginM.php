@@ -1,12 +1,10 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-
 class LoginM extends CI_Model
 {
     function __construct()
     {
         parent::__construct();
     }
-
     // response jika field ada yang kosong
     public function empty_response(){
         $response['status']=502;
@@ -14,7 +12,6 @@ class LoginM extends CI_Model
         $response['message']='Field tidak boleh kosong';
         return $response;
     }
-
     function LoginUser($email, $password)
     {
         if(empty($email) || empty($password)){
@@ -36,7 +33,6 @@ class LoginM extends CI_Model
             }
         }
     }
-
     function LoginKader($email, $password)
     {
         if(empty($email) || empty($password)){
