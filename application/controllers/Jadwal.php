@@ -12,12 +12,12 @@ class Jadwal extends REST_Controller{
 
   // method index untuk menampilkan semua data menggunakan method get
   public function index_get(){
-    $id = $this->get('id');
+    $id = $this->get('iduser');
     $tgl = $this->get('tgl');
     if ($id == '') {
         $response = $this->JadwalM->get_all();
     } else {
-        $this->db->where('id', $id);
+        $this->db->where('iduser', $id);
         $this->db->where('tgl', $tgl);
         $response = $this->JadwalM->get_all();
     }

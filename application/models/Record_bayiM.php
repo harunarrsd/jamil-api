@@ -12,7 +12,7 @@ class Record_bayiM extends CI_Model{
   }
 
   // function untuk insert data ke tabel tb_person
-  public function add($tinggi_badan,$berat_badan,$idbayi){
+  public function add($tinggi_badan,$berat_badan,$idbayi,$usia_bulan){
     if(empty($tinggi_badan) || empty($berat_badan) || empty($idbayi)){
       return $this->empty_response();
     }else{
@@ -20,6 +20,7 @@ class Record_bayiM extends CI_Model{
         "tinggi_badan"=>$tinggi_badan,
         "berat_badan"=>$berat_badan,
         "idbayi"=>$idbayi,
+        "usia_bulan"=>$usia_bulan,
         "tgl"=>date('Y-m-d')
       );
       $insert = $this->db->insert("record_bayi", $data);

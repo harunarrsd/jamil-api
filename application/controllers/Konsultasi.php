@@ -23,17 +23,28 @@ class Konsultasi extends REST_Controller{
   }
 
   // untuk menambah data menaggunakan method post
-//   public function add_post(){
-//     $response = $this->KaderM->add(
-//         $this->post('idposyandu'),
-//         $this->post('nama'),
-//         $this->post('photo'),
-//         $this->post('notelp'),
-//         $this->post('email'),
-//         md5($this->post('password'))
-//       );
-//     $this->response($response);
-//   }
+  public function add_post(){
+    $response = $this->KonsultasiM->add(
+        $this->post('iduser'),
+        $this->post('deskripsi'),
+        $this->post('idkader'),
+        $this->post('role')
+      );
+    $this->response($response);
+  }
+
+  public function chat_get(){
+    $iduser = $this->get('iduser');
+    $idkader = $this->get('idkader');
+    if ($iduser == '' && $idkader == '') {
+        $response = $this->KonsultasiM->get_all_join();
+    } else {
+        $this->db->where('iduser', $iduser);
+        $this->db->where('idkader', $idkader);
+        $response = $this->KonsultasiM->get_all_join();
+    }
+    $this->response($response);
+  }
 }
 
 ?>

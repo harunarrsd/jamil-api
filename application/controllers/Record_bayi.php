@@ -27,7 +27,8 @@ class Record_bayi extends REST_Controller{
     $response = $this->Record_bayiM->add(
         $this->post('tinggi_badan'),
         $this->post('berat_badan'),
-        $this->post('idbayi')
+        $this->post('idbayi'),
+        $this->post('usia_bulan')
       );
     $this->response($response);
   }

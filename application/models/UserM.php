@@ -25,7 +25,7 @@ class UserM extends CI_Model{
 
   // function untuk insert data
   public function add($idposyandu,$nama,$photo,$notelp,$email,$password,$status){
-    if(empty($nama) || empty($email) || empty($password) || empty($status)){
+    if(empty($nama) || empty($email) || empty($password)){
       return $this->empty_response();
     }else{
       $data = array(
@@ -51,6 +51,35 @@ class UserM extends CI_Model{
       }
     }
   }
+
+  // update
+  public function update_regist($id,$idposyandu,$status){
+    if($id == ''){
+      return $this->empty_response();
+    }else{
+      $where = array(
+        "user.id"=>$id
+      );
+      $set = array(
+        "idposyandu"=>$idposyandu,
+        "status"=>$status
+      );
+      $this->db->where($where);
+      $update = $this->db->update("user",$set);
+      if($update){
+        $response['status']=200;
+        $response['error']=false;
+        $response['message']='Data user diubah.';
+        return $response;
+      }else{
+        $response['status']=502;
+        $response['error']=true;
+        $response['message']='Data user gagal diubah.';
+        return $response;
+      }
+    }
+  }
+
 }
 
 ?>
