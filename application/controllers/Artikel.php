@@ -12,7 +12,13 @@ class Artikel extends REST_Controller{
 
   // method index untuk menampilkan semua data person menggunakan method get
   public function index_get(){
-    $response = $this->ArtikelM->all_artikel();
+    $id = $this->get('id');
+    if ($id == '') {
+        $response = $this->ArtikelM->all_artikel();
+    } else {
+        $this->db->where('id', $id);
+        $response = $this->ArtikelM->all_artikel();
+    }
     $this->response($response);
   }
 
